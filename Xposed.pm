@@ -223,7 +223,9 @@ sub get_outdir($) {
     my $platform = shift;
 
     if ($platform eq 'arm') {
-        return 'out/target/product/generic';
+        # Begin Felix Hu 2019-04-23
+        return 'out/target/product/pv963_wdf3_r';
+        # End Felix Hu 2019-04-23
     } elsif ($platform eq 'armv5') {
         return 'out_armv5/target/product/generic';
     } elsif ($platform eq 'x86' || $platform eq 'arm64') {
@@ -253,7 +255,10 @@ sub get_lunch_mode($$) {
     my $sdk = shift;
 
     if ($platform eq 'arm' || $platform eq 'armv5' || $platform eq 'host' || $platform eq 'hostd') {
-        return ($sdk <= 17) ? 'full-eng' : 'aosp_arm-eng';
+        # Begin Felix Hu 2019-04-23
+        # return ($sdk <= 17) ? 'full-eng' : 'aosp_arm-eng';
+        return ($sdk <= 17) ? 'full-eng' : 'full_pv963_wdf3_r-eng';
+        # End Felix Hu 2019-04-23
     } elsif ($platform eq 'x86') {
         return ($sdk <= 17) ? 'full_x86-eng' : 'aosp_x86-eng';
     } elsif ($platform eq 'arm64' && $sdk >= 21) {
